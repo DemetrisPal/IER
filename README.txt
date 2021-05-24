@@ -1,0 +1,18 @@
+Data set: "Data Demetris Palochis.xlsl"
+In this file you can find all of the calculations and data used in the article "The effect of lockdown in 2020 on students who moved out for studies, regarding the calories burnt each day, an observational study"
+
+This README file will provide instructions about how to obtain the same results as shown in the data file. The steps below must be followed in the same order as they are showed.
+
+PROCEDURE
+	step1: Open the "Demetris Palochis.xlsx" file and go to the "Data used" sheet.
+	step2: In a new column use the function SUM to calculate the total amount of calories burnt by each student during the period of 7 days. To do that enter in the first row of your new column "=SUM(" , then select the appropriate cells of the participant of the first row, type ")" and press ENTER. Then hover over the new value you calculated, at the bottom right of the cell until the small cross appears. Drag and drop that cross downwards until all of the data are selected.
+	step3: Now calculate the average calories per day. In a similar way as in step2, go to the first row and divide the SUM by 7 (type: =[@[Sum of calories]]/7). Then apply that formula to all of the rows.
+	step4: Calculate the mean for 2019 and for 2020. Use the filters on the first row of the grid to make an ascending order in the year column. Then, below the column with the average calories per day, use the function AVERAGE() to calculate a mean value for 2019 and 2020 by selecting the corresponding cells of the same column.
+	step5: In a similar manner as in step4, calculate the standard deviation for each year. Use the function STDEV.S() .
+	step6:  Proceed with the T-test. In the excel file the test was carried out in the "T test" sheet. You can do it in the same sheet. First use the function count to find the number of samples per year (count). Then substract 1 by each number to find the degrees of freedom per year (df).
+	step7: Calculate the sum of squares for each year (SS1 and SS2). Multiply the square of standard deviation with the degrees of freedom for each year.
+	step8: Calculate the square overall standard deviation (sp^2), this gives one value for both years.  This is equal to the sum of SS1 and SS2 over the sum of standard deviations ((SS1 + SS2)/(SD1+SD2)).
+	step9: The calculate the T-value. T-value is equal to the difference of the mean values over the squareroot of (sp^2/n1 + sp^2/n2), where sp^2 is the square overall standard deviation and n1, n2 are the number of sample for 2019 and 2020 respectively.
+	step10: Calculate the P-value. Use the function T.DIST.2T(x1 ; x2). In the place of x1 use the absolute value of T-value and in the place of x2 use the total number of degrees of freedom which is the sum of df1 and df2.
+
+ADDITIONAL: Calculate and plot the normal distribution for 2019 and 2020 separately. For each set of values of mean calories burnt, use the function NORM.DIST(x1 ; x2 ; x3 ; FALSE). For x1 use the value of mean calories per day at each row, for x2 use the mean value of the corresponding year, x3 use the corresponding standrad deviation and finally add the value FALSE. This function should be used at each row of the data but the mean value and standard deviation should be for the correct year (2019 or 2020). The plot in a scatter graph the average calories per day versus the normalised value. You should produce two separate graphs of a bell-shaped curve. To make a tidy curve use the filtes on the top to make the normalised value ascending from low to high values. You can see the graphs at the last two sheets of the excel file.
